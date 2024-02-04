@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CallsComponent } from 'src/modules/main/calls/calls.component';
-import { MainContentComponent } from 'src/modules/main/main-content/main-content.component';
 
-import { MainModule } from 'src/modules/main/main.module';
+import { RouterModule, Routes } from '@angular/router';
+import { MainContentComponent } from './main-content/main-content.component';
+import { AppComponent } from 'src/app/app.component';
+import { CallsComponent } from './calls/calls.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/clients', pathMatch: 'full' },
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class MainModule {}

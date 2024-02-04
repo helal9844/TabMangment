@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  height: max-content;
+}
+
+.mat-paginator {
+  margin-top: 20px;
+}
+.row-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.icons-container {
+  display: flex;
+}
+.icons-container span {
+  text-align: center;
+  cursor: pointer;
+  width: 50px;
+}
+
+.add-user-container {
+  margin-left: auto;
+}

@@ -1,0 +1,69 @@
+<div>
+  <div class="row-container">
+    <div class="icons-container">
+      <span (click)="exportToExcel()"
+        ><i class="bi bi-file-earmark-spreadsheet" style="color: blue"></i
+      ></span>
+      <span (click)="printTable()"
+        ><i class="bi bi-printer" style="color: blue"></i
+      ></span>
+      <span (click)="RefreshTable()"
+        ><i class="bi bi-arrow-clockwise" style="color: blue"></i
+      ></span>
+      <span (click)="checkSearch = !checkSearch"
+        ><i class="bi bi-search" style="color: blue"></i
+      ></span>
+      <span (click)="openColumnSelectionDialog()"
+        ><i class="bi bi-gear" style="color: blue"></i
+      ></span>
+    </div>
+
+    <div class="add-user-container">
+      <button class="btn btn-primary" (click)="addCall()">Add Call</button>
+    </div>
+  </div>
+
+  <table
+    id="printable-table"
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+  >
+    <ng-container
+      *ngFor="let column of displayedColumns"
+      [matColumnDef]="column"
+    >
+      <th mat-header-cell *matHeaderCellDef>
+        {{ column }}<br />
+        <input
+          *ngIf="checkSearch === true"
+          matInput
+          style="width: 90px"
+          (input)="applyFilter($event, column)"
+          placeholder="Search"
+        />
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="column !== 'actions'; else actionsColumn">
+          {{ element[column] }}
+        </ng-container>
+        <ng-template #actionsColumn>
+          <button mat-icon-button (click)="editCall(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteCall(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

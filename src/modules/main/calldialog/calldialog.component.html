@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>{{ data.action === "Add" ? "Add" : "Edit" }} Client</h2>
+<div mat-dialog-content>
+  <form>
+    <label for="description">Description:</label>
+    <input
+      type="text"
+      id="description"
+      name="description"
+      [(ngModel)]="data.call.description"
+    />
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" [(ngModel)]="data.call.date" />
+
+    <label for="project">project:</label>
+    <input
+      type="text"
+      id="project"
+      name="project"
+      [(ngModel)]="data.call.project"
+    />
+
+    <label for="callType">Call Type:</label>
+    <input
+      type="text"
+      id="callType"
+      name="callType"
+      [(ngModel)]="data.call.callType"
+    />
+
+    <label for="employeeId">Employee Id:</label>
+    <input
+      type="number"
+      id="employeeId"
+      name="employeeId"
+      [(ngModel)]="data.call.employeeId"
+    />
+    <label for="clientId">Client Id:</label>
+    <input
+      type="number"
+      id="clientId"
+      name="clientId"
+      [(ngModel)]="data.call.clientId"
+    />
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onSaveClick()" cdkFocusInitial>
+    {{ data.action === "Add" ? "Save" : "Update" }}
+  </button>
+</div>
